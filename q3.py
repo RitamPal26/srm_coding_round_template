@@ -67,7 +67,9 @@ def find_overloaded_users(events):
         set()
     """
     # TODO: Implement your solution here
-    pass
+    n = len(events)
+    
+    
 
 
 if __name__ == "__main__":
