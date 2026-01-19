@@ -52,8 +52,20 @@ def first_stable_character(s):
         None
     """
     # TODO: Implement your solution here
-    pass
-
+    characters = set()
+    n = len(s)
+    answer = None
+    
+    if n <= 1:
+        return None
+    
+    for i in range(1, n):
+        if s[i] == s[i-1]:
+            answer = s[i]
+            break
+    
+    return answer
+    
 
 if __name__ == "__main__":
     # Test your solution here
