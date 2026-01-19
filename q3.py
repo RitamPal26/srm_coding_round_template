@@ -46,6 +46,7 @@ Explanation:
 Note: The window is "within 10 seconds", meaning timestamps[j] - timestamps[i] < 10
 """
 
+import heapq
 
 def find_overloaded_users(events):
     """
@@ -68,9 +69,16 @@ def find_overloaded_users(events):
     """
     # TODO: Implement your solution here
     n = len(events)
-    
-    
-
+    count_persons = set()
+    overloaded_users = set()
+    heapq.heapify(events)
+    print(events)
+        
+    for i in range(n):
+        if events[i][0] not in count_persons:
+            count_persons.add(events[i][0])
+            
+    print(count_persons)
 
 if __name__ == "__main__":
     # Test your solution here

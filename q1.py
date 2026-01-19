@@ -52,7 +52,6 @@ def first_stable_character(s):
         None
     """
     # TODO: Implement your solution here
-    characters = set()
     n = len(s)
     answer = None
     
