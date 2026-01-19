@@ -68,17 +68,34 @@ def find_overloaded_users(events):
         set()
     """
     # TODO: Implement your solution here
-    n = len(events)
-    count_persons = set()
+    if not events:
+        return set()
+    
+    user_events = {}
     overloaded_users = set()
-    heapq.heapify(events)
-    print(events)
+    
+    for user_id, timestamp in events:
+        if user_id not in user_events:
+            user_events[user_id] = []
+        user_events[user_id].append(timestamp)
+    
+    
+    for user_id, timestamps in user_events.items():
+        timestamps.sort()
         
-    for i in range(n):
-        if events[i][0] not in count_persons:
-            count_persons.add(events[i][0])
+        for i in range(len(timestamps)):
+            count = 0
+            for j in range(i, len(timestamps)):
+                if timestamps[j] - timestamps[i] < 10:
+                    count += 1
+                else:
+                    break
             
-    print(count_persons)
+            if count >= 3:
+                overloaded_users.add(user_id)
+                break
+    
+    return overloaded_users
 
 if __name__ == "__main__":
     # Test your solution here
